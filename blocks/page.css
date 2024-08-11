@@ -16,5 +16,7 @@
   display: block;
   margin: auto;
   max-width: 100%;
-  background-color: #0f3e41;
+  font-family: "inter";
+  color: #fff;
+  background-color: #000;
 }

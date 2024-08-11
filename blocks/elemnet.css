@@ -1,0 +1,10 @@
+.elements__element {
+  border-radius: 5%;
+  background-color: #fff;
+}
+.elements__name {
+  font-weight: 900;
+  font-size: 24px;
+  padding: 25px 15px 31px 21px;
+  color: black;
+}
