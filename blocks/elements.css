@@ -22,9 +22,11 @@
 @media screen and (max-width: 620px) {
   .elements {
     max-width: 300px;
+    padding-top: 36px;
   }
   .elements__container {
     grid-template-columns: repeat(1, 282px);
     grid-template-rows: repeat(6, 361px);
+    gap: 20px;
   }
 }
