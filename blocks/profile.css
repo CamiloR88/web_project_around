@@ -3,5 +3,15 @@
   margin: auto;
   padding-top: 40px;
   display: grid;
-  grid-template-columns: 240px auto 150px;
+  grid-template-columns: 120px auto 150px;
+}
+@media screen and(max-width:920px) {
+}
+@media screen and (max-width: 720px) {
+  .profile {
+    max-width: 282px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

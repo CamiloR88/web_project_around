@@ -1,10 +1,15 @@
 .elements__element {
+  display: flex;
+  flex-direction: column;
   border-radius: 5%;
   background-color: #fff;
 }
 .elements__name {
+  display: flex;
   font-weight: 900;
   font-size: 24px;
+  line-height: 30px;
   padding: 25px 15px 31px 21px;
   color: black;
+  justify-content: space-between;
 }

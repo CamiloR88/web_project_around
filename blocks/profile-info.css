@@ -1,5 +1,32 @@
-.profile__info {
-  max-width: 415px;
-  min-height: 77px;
-  background-color: aquamarine;
+.profile__name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin-left: 30px;
+  padding-top: 22px;
+}
+.profile__position {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin-left: 30px;
+  padding-top: 16px;
+}
+@media screen and (max-width: 720px) {
+  .profile__name {
+    max-width: 282px;
+    text-align: center;
+    margin: 0;
+    font-size: 22px;
+    line-height: 27px;
+    padding-top: 30px;
+  }
+  .profile__position {
+    max-width: 282px;
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+    line-height: 17px;
+    padding-top: 14px;
+  }
 }
