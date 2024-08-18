@@ -1,2 +1,7 @@
-let sayHi = "hola a todos!";
-console.log(sayHi);
+const modal = document.querySelector(".popup");
+const openModal = document.querySelector(".edit__btn");
+const closeModal = document.querySelector(".save__btn");
+
+openModal.addEventListener("click", () => {
+  modal.showModal();
+});

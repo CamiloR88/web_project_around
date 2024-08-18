@@ -5,6 +5,15 @@
   margin-left: 30px;
   padding-top: 22px;
 }
+.edit__btn {
+  padding: 0;
+  border: none;
+  background-color: black;
+}
+.edit__btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 .profile__position {
   font-weight: 400;
   font-size: 18px;

@@ -4,7 +4,7 @@
   border-radius: 5%;
   background-color: #fff;
 }
-.elements__name {
+.element__name {
   display: flex;
   font-weight: 900;
   font-size: 24px;
@@ -12,4 +12,9 @@
   padding: 25px 15px 31px 21px;
   color: black;
   justify-content: space-between;
+}
+
+.element__like-icon:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

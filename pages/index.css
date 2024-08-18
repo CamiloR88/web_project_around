@@ -2,13 +2,14 @@
 @import url("../vendor/fonts.css");
 @import url("../blocks/body.css");
 @import url("../blocks/page.css");
-@import url("../blocks/hearder.css");
+@import url("../blocks/header.css");
 @import url("../blocks/profile.css");
 @import url("../blocks/avatar.css");
 @import url("../blocks/profile-info.css");
 @import url("../blocks/edit-button.css");
-@import url("../blocks/profile-button.css");
+@import url("../blocks/add-button.css");
 @import url("../blocks/elements.css");
 @import url("../blocks/elemnet.css");
 @import url("../blocks/group.css");
 @import url("../blocks/footer.css");
+@import url("../blocks/popup.css");
