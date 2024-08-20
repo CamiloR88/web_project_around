@@ -12,6 +12,9 @@
   <body>
     <div class="page">
       <dialog class="popup">
+        <button type="submit" class="popup__close-btn">
+          <img src="./svg/popup-close.svg" alt="boton de cerrar" />
+        </button>
         <form class="popup__content" method="dialog">
           <h2 class="popup__title">Editar perfil</h2>
 
@@ -19,7 +22,7 @@
 
           <input type="text" class="popup__input" placeholder="Acerca de mi" />
 
-          <button type="submit" class="save__btn">Guadar</button>
+          <button type="submit" class="popup__save-btn">Guadar</button>
         </form>
       </dialog>
       <div class="main">
@@ -42,14 +45,18 @@
             <div class="profile__info">
               <div class="profile__name">
                 Jacques Cousteau
-                <button type="submit" class="edit__btn">
-                  <img src="./svg/pencil.svg" alt="" />
+                <button type="submit" class="profile__edit-btn">
+                  <img src="./svg/pencil.svg" alt="boton de editar" />
                 </button>
               </div>
               <div class="profile__position">Explorer</div>
             </div>
             <div class="profile__add-btn">
-              <img src="./svg/rectangle.svg" alt="" />
+              <img
+                calss="profile__add-btn_svg"
+                src="./svg/plus.svg"
+                alt="boton de agregar"
+              />
             </div>
           </section>
           <section class="elements">
@@ -57,14 +64,14 @@
               <div class="elements__element">
                 <img
                   src="./images/valle-de-yosemite.jpg"
-                  alt=""
-                  class="elements__element element_img"
+                  alt="valle de yosemite"
+                  class="element__img"
                 />
                 <div class="element__name">
                   Valle de Yosemite
                   <img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>
@@ -72,13 +79,13 @@
               <div class="elements__element">
                 <img
                   src="./images/lago-louise.png"
-                  alt=""
+                  alt="Lago Louise"
                   class="element__img"
                 />
                 <div class="element__name">
                   Lago Louise<img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>
@@ -86,23 +93,27 @@
               <div class="elements__element">
                 <img
                   src="./images/montañas-calvas.png"
-                  alt=""
+                  alt="Montañas Calvas"
                   class="element__img"
                 />
                 <div class="element__name">
                   Montañas Calvas<img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>
               </div>
               <div class="elements__element">
-                <img src="./images/latemar.png" alt="" class="element__img" />
+                <img
+                  src="./images/latemar.png"
+                  alt="Latemar"
+                  class="element__img"
+                />
                 <div class="element__name">
                   Latemar<img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>
@@ -110,13 +121,13 @@
               <div class="elements__element">
                 <img
                   src="./images/vanois-national.png"
-                  alt=""
+                  alt="Vanois National"
                   class="element__img"
                 />
                 <div class="element__name">
                   Vanois National...<img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>
@@ -124,13 +135,13 @@
               <div class="elements__element">
                 <img
                   src="./images/lago-di-braies.png"
-                  alt=""
+                  alt="lago di braies"
                   class="element__img"
                 />
                 <div class="element__name">
                   Lago di Braies<img
                     class="element__like-icon"
-                    src="./svg/like.svg"
+                    src="./svg/like-off.svg"
                     alt="icono de like"
                   />
                 </div>

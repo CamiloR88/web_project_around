@@ -5,12 +5,12 @@
   margin-left: 30px;
   padding-top: 22px;
 }
-.edit__btn {
+.profile__edit-btn {
   padding: 0;
   border: none;
   background-color: black;
 }
-.edit__btn:hover {
+.profile__edit-btn:hover {
   cursor: pointer;
   opacity: 0.8;
 }
