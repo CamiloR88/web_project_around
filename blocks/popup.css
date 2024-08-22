@@ -12,7 +12,7 @@
   opacity: 0.6;
 }
 
-.popup__content {
+.popup__form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,9 +29,11 @@
   color: #000;
 }
 .popup__input {
+  height: 27px;
   width: 22rem;
   border: none;
   border-bottom: 2px #f1f1f1 solid;
+  transition: width 0.3s ease;
 }
 
 .popup__save-btn {
