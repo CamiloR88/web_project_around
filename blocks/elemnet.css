@@ -4,20 +4,40 @@
   flex-direction: column;
   border-radius: 5%;
   background-color: #fff;
+  overflow: hidden;
+}
+.element__img {
+  max-width: 282px;
+  min-height: 282px;
+}
+.element__description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 25px 15px 31px 21px;
+}
+
+.element__img:hover {
+  cursor: pointer;
 }
 .element__name {
   display: flex;
   font-weight: 900;
   font-size: 24px;
   line-height: 30px;
-  padding: 25px 15px 31px 21px;
   color: black;
-  justify-content: space-between;
+}
+.element__like-icon {
+  padding-top: 5px;
 }
 
 .element__like-icon:hover {
   opacity: 0.6;
   cursor: pointer;
+}
+.element__like-icon_active {
+  opacity: 1;
+  background-color: black;
 }
 
 .element__remove-icon {

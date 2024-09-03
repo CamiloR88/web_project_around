@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="page">
-      <dialog class="popup">
+      <dialog class="popup" id="popup-profile">
         <button type="submit" class="popup__close-btn">
           <img src="./svg/popup-close.svg" alt="boton de cerrar" />
         </button>
@@ -33,6 +33,32 @@
           />
 
           <button type="submit" class="popup__save-btn">Guadar</button>
+        </form>
+      </dialog>
+      <dialog class="popup" id="add-card">
+        <button type="submit" class="popup__close-btn" id="c-btn">
+          <img src="./svg/popup-close.svg" alt="boton de cerrar" />
+        </button>
+        <form class="popup__form" method="dialog">
+          <h2 class="popup__title">New Place</h2>
+
+          <input
+            type="text"
+            class="popup__input"
+            placeholder="title"
+            id="title"
+          />
+
+          <input
+            type="text"
+            class="popup__input"
+            placeholder="image URL"
+            id="url"
+          />
+
+          <button type="submit" class="popup__save-btn" id="s-btn">
+            Guadar
+          </button>
         </form>
       </dialog>
       <div class="main">
@@ -80,13 +106,15 @@
                   alt="valle de yosemite"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Valle de Yosemite
-                  <img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Valle de Yosemite</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="elements__element">
@@ -97,12 +125,15 @@
                   alt="Lago Louise"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Lago Louise<img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Lago Louise</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="elements__element">
@@ -113,12 +144,15 @@
                   alt="Montañas Calvas"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Montañas Calvas<img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Montañas Calvas</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="elements__element">
@@ -129,12 +163,15 @@
                   alt="Latemar"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Latemar<img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Latemar</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="elements__element">
@@ -145,12 +182,15 @@
                   alt="Vanois National"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Vanois National...<img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Venois National...</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="elements__element">
@@ -161,12 +201,15 @@
                   alt="lago di braies"
                   class="element__img"
                 />
-                <div class="element__name">
-                  Lago di Braies<img
-                    class="element__like-icon"
-                    src="./svg/like-off.svg"
-                    alt="icono de like"
-                  />
+                <div class="element__description">
+                  <div class="element__name">Lago di Braies</div>
+                  <div>
+                    <img
+                      class="element__like-icon"
+                      src="./svg/like-off.svg"
+                      alt="icono de like"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,6 +218,23 @@
         <footer class="footer">© 2021 Around The U.S.</footer>
       </div>
     </div>
+    <template id="card-template">
+      <div class="elements__element">
+        <img class="element__remove-icon" src="./svg/remove-icon.svg" />
+
+        <img alt="" class="element__img" />
+        <div class="element__description">
+          <div class="element__name"></div>
+          <div>
+            <img
+              class="element__like-icon"
+              src="./svg/like-off.svg"
+              alt="icono de like"
+            />
+          </div>
+        </div>
+      </div>
+    </template>
     <script src="./script.js"></script>
   </body>
 </html>
