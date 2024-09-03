@@ -27,27 +27,25 @@
   line-height: 30px;
   color: black;
 }
-.element__like-icon {
+.element__like {
   padding-top: 5px;
 }
 
-.element__like-icon:hover {
+.element__like:hover {
   opacity: 0.6;
   cursor: pointer;
 }
-.element__like-icon_active {
-  opacity: 1;
-  background-color: black;
+.element__like_active {
 }
 
-.element__remove-icon {
+.element__remove {
   position: absolute;
   top: 15px;
   right: 15px;
   height: 25px;
   width: 25px;
 }
-.element__remove-icon:hover {
+.element__remove:hover {
   opacity: 0.6;
   cursor: pointer;
 }

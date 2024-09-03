@@ -33,17 +33,24 @@ const profielModalClose = document.querySelector(".popup__close-btn");
 const profileInfo = document.querySelector(".profile__info");
 const profileName = document.querySelector(".profile__name");
 const profilePosition = document.querySelector(".profile__position");
-//popup para agregar imagenes
+//popup para agregar imagenes.
 const cardModal = document.querySelector("#add-card");
 const cardModalOpen = document.querySelector(".profile__add-btn");
 const cardModalSave = document.querySelector("#s-btn");
 const cardModalClose = document.querySelector("#c-btn");
 const cardsContainer = document.querySelector(".elements__container");
+//boton de eliminar.
+const cardRemove = document.querySelector(".element__remove");
+//boton de like.
+const cardLike = document.querySelector(".element__like");
 
+//cerrar modal
 function handleModalClose() {
   profileModal.close();
   cardModal.close();
 }
+
+//function para actualizar la informacion.
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -90,4 +97,13 @@ cardModalSave.addEventListener("click", function () {
 
   cardTitle.value = "";
   cardUrl.value = "";
+});
+//remove
+cardRemove.addEventListener("click", function (evt) {
+  const cardTarget = evt.target;
+  cardTarget.remove();
+});
+//like
+cardLike.addEventListener("click", function (evt) {
+  evt.target.classList.toggle(".element__like_active");
 });
