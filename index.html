@@ -61,6 +61,13 @@
           </button>
         </form>
       </dialog>
+       <dialog class="popup__image" id="show-card">
+        <button type="submit" class="popup__close-btn" id="c-img">
+          <img src="./svg/popup-close.svg" alt="boton de cerrar" />
+        </button>
+        <img src="" alt="" class="popup__image-render">
+<div class="popup__image-name"></div>
+      </dialog>
       <div class="main">
         <header class="header">
           <div class="header__container">
@@ -98,7 +105,7 @@
           </section>
           <section class="elements">
             <div class="elements__container">
-              <div class="elements__element">
+              <!-- <div class="elements__element">
                 <img class="element__remove" src="./svg/remove-icon.svg" />
 
                 <img
@@ -210,7 +217,7 @@
                       alt="icono de like"
                     />
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </section>
@@ -225,13 +232,8 @@
         <img alt="" class="element__img" />
         <div class="element__description">
           <div class="element__name"></div>
-          <div>
-            <img
-              class="element__like"
-              src="./svg/like-off.svg"
-              alt="icono de like"
-            />
-          </div>
+           <button class="element__like">
+          </button>
         </div>
       </div>
     </template>

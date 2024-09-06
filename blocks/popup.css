@@ -64,6 +64,28 @@
   opacity: 0.8;
   cursor: pointer;
 }
+.popup__image {
+  overflow: visible;
+  border: none;
+  padding: 0;
+  transition: width 0.3s ease;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+.popup__image::backdrop {
+  background-color: #000;
+  opacity: 0.6;
+}
+.popup__image-render {
+  max-width: 75vw;
+  max-height: 75vh;
+}
+.popup__image-name {
+  position: absolute;
+  bottom: -25px;
+  color: #fff;
+}
+
 @media screen and (max-width: 550px) {
   .popup__close-btn {
     position: absolute;

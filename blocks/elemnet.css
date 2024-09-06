@@ -28,7 +28,11 @@
   color: black;
 }
 .element__like {
-  padding-top: 5px;
+  border: none;
+  background: url(../svg/like-off.svg) center no-repeat;
+  background-size: 100%;
+  width: 21px;
+  height: 21px;
 }
 
 .element__like:hover {
@@ -36,6 +40,9 @@
   cursor: pointer;
 }
 .element__like_active {
+  opacity: 1;
+  background: url(../svg/like-on.svg) center no-repeat;
+  background-size: 100%;
 }
 
 .element__remove {

@@ -1,8 +1,16 @@
-//imagenes
+//Cards
 const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
   {
     name: "Lago Louise",
@@ -15,14 +23,6 @@ const initialCards = [
   {
     name: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
 //popup del perfil
@@ -39,15 +39,15 @@ const cardModalOpen = document.querySelector(".profile__add-btn");
 const cardModalSave = document.querySelector("#s-btn");
 const cardModalClose = document.querySelector("#c-btn");
 const cardsContainer = document.querySelector(".elements__container");
-//boton de eliminar.
-const cardRemove = document.querySelector(".element__remove");
-//boton de like.
-const cardLike = document.querySelector(".element__like");
 
+//popup de la imagen
+const imageModal = document.querySelector("#show-card");
+const imageModalClose = document.querySelector("#c-img");
 //cerrar modal
 function handleModalClose() {
   profileModal.close();
   cardModal.close();
+  imageModal.close();
 }
 
 //function para actualizar la informacion.
@@ -62,7 +62,7 @@ function handleFormSubmit(evt) {
   handleModalClose();
 }
 
-function handleCardAdd(evt) {}
+function handleCardAdd() {}
 
 profileModalOpen.addEventListener("click", () => {
   profileModal.showModal();
@@ -74,6 +74,7 @@ profielModalClose.addEventListener("click", handleModalClose);
 profileModalSave.addEventListener("click", handleFormSubmit);
 
 cardModalClose.addEventListener("click", handleModalClose);
+imageModalClose.addEventListener("click", handleModalClose);
 
 //function conectar el template y hacer una tarjeta nueva
 
@@ -85,6 +86,25 @@ function addCard(cardTitleValue, cardUrlValue) {
 
   cardElement.querySelector(".element__name").textContent = cardTitleValue;
   cardElement.querySelector(".element__img").src = cardUrlValue;
+  //popup de la imagen
+  cardElement.querySelector(".element__img").addEventListener("click", () => {
+    imageModal.showModal();
+    imageModal.querySelector(".popup__image-render").src = cardUrlValue;
+    imageModal.querySelector(".popup__image-name").textContent = cardTitleValue;
+  });
+
+  //remove
+  cardElement
+    .querySelector(".element__remove")
+    .addEventListener("click", function () {
+      cardElement.remove();
+    });
+  //like
+  cardElement
+    .querySelector(".element__like")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("element__like_active");
+    });
 
   cardsContainer.prepend(cardElement);
 }
@@ -98,12 +118,7 @@ cardModalSave.addEventListener("click", function () {
   cardTitle.value = "";
   cardUrl.value = "";
 });
-//remove
-cardRemove.addEventListener("click", function (evt) {
-  const cardTarget = evt.target;
-  cardTarget.remove();
-});
-//like
-cardLike.addEventListener("click", function (evt) {
-  evt.target.classList.toggle(".element__like_active");
+
+initialCards.forEach(function (card) {
+  addCard(card.name, card.link);
 });
