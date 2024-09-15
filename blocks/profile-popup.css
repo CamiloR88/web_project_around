@@ -31,7 +31,13 @@
 .popup__input {
   width: 22rem;
   border: none;
-  border-bottom: 2px #f1f1f1 solid;
+  border-bottom: 1px #f1f1f1 solid;
+}
+.popup__input:invalid {
+  border-bottom: 1px red solid;
+}
+.popup__input:valid {
+  border-bottom: 1px green solid;
 }
 
 .popup__save-btn {

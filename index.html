@@ -15,22 +15,33 @@
         <button type="submit" class="popup__close-btn">
           <img src="./svg/popup-close.svg" alt="boton de cerrar" />
         </button>
-        <form class="popup__form" method="dialog">
+        <form class="popup__form" method="dialog" name="editProf" action="???">
           <h2 class="popup__title">Editar perfil</h2>
 
           <input
+
             type="text"
             class="popup__input"
             placeholder="Nombre"
             id="name"
+            minlength="2"
+            maxlength="30"
+            required
           />
+          <span class="popup__input-error"></span>
+
 
           <input
+            name="boutInput"
             type="text"
             class="popup__input"
             placeholder="Acerca de mi"
             id="about"
+            minlength="2"
+            maxlength="30"
+            required
           />
+           <span class="popup__input-error"></span>
 
           <button type="submit" class="popup__save-btn">Guadar</button>
         </form>
@@ -39,22 +50,31 @@
         <button type="submit" class="popup__close-btn" id="c-btn">
           <img src="./svg/popup-close.svg" alt="boton de cerrar" />
         </button>
-        <form class="popup__form" method="dialog">
+        <form class="popup__form" method="dialog" name="form2">
           <h2 class="popup__title">New Place</h2>
 
           <input
+          name="titleInput"
             type="text"
             class="popup__input"
             placeholder="title"
             id="title"
+            minlength="2"
+            maxlength="30"
+            required
           />
+           <span class="popup__input-error"></span>
 
           <input
-            type="text"
+            name="uInput"
+            type="url"
             class="popup__input"
             placeholder="image URL"
             id="url"
+            minlength="1"
+            required
           />
+           <span class="popup__input-error"></span>
 
           <button type="submit" class="popup__save-btn" id="s-btn">
             Guadar

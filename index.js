@@ -108,7 +108,7 @@ function addCard(cardTitleValue, cardUrlValue) {
 
   cardsContainer.prepend(cardElement);
 }
-
+//nombre y src de la nueva tarjeta
 cardModalSave.addEventListener("click", function () {
   let cardTitle = document.querySelector("#title");
   let cardUrl = document.querySelector("#url");
@@ -122,3 +122,26 @@ cardModalSave.addEventListener("click", function () {
 initialCards.forEach(function (card) {
   addCard(card.name, card.link);
 });
+
+// function setSubmitButtonState(isFormValid) {
+//   if (isFormValid) {
+//     addButton.removeAttribute("disabled");
+//     addButton.classList.remove("input__btn_disabled");
+//   } else {
+//     addButton.setAttribute("disabled", true);
+//     addButton.classList.add("input__btn_disabled");
+//   }
+// }
+
+// form.addEventListener("submit", function (evt) {
+//   evt.preventDefault();
+//   addSong(artist.value, title.value);
+
+//   form.reset();
+//   setSubmitButtonState(false);
+// });
+
+// form.addEventListener("input", function (evt) {
+//   const isValid = artist.value.length > 0 && title.value.length > 0;
+//   setSubmitButtonState(isValid);
+// });
