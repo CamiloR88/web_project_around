@@ -128,6 +128,7 @@ cardModalSave.addEventListener("click", function () {
 
   cardTitle.value = "";
   cardUrl.value = "";
+  handleModalClose();
 });
 
 initialCards.forEach(function (card) {
