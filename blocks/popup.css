@@ -35,11 +35,14 @@
   border-bottom: 1px #f1f1f1 solid;
   transition: width 0.3s ease;
 }
-.popup__input:invalid {
+.popup__input_type_error {
   border-bottom: 1px red solid;
 }
 .popup__input:valid {
   border-bottom: 1px rgb(8, 170, 8) solid;
+}
+.popup__input-error_active {
+  color: rgb(255, 0, 0);
 }
 
 .popup__save-btn {
@@ -49,15 +52,16 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+  cursor: pointer;
   color: #c4c4c4;
   background-color: #000;
 }
 
-.popup__save-btn:hover {
-  background-color: #000;
-  opacity: 0.8;
-  cursor: pointer;
+.popup__save-btn_inactive {
+  background-color: #c4c4c4;
+  color: #fff;
 }
+
 .popup__close-btn {
   position: absolute;
   right: -35px;
