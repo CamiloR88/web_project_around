@@ -72,29 +72,19 @@ cardModalOpen.addEventListener("click", () => {
 });
 profielModalClose.addEventListener("click", handleModalClose);
 profileModalSave.addEventListener("click", handleFormSubmit);
-profileModal.addEventListener("dblclick", (evt) => {
-  console.log(evt.target);
-  if (evt.target === profileModal) {
-    profileModal.close();
-  }
-});
 
 cardModalClose.addEventListener("click", handleModalClose);
-
-cardModal.addEventListener("dblclick", (evt) => {
-  console.log(evt.target);
-  if (evt.target === cardModal) {
-    cardModal.close();
-  }
-});
-
 imageModalClose.addEventListener("click", handleModalClose);
 
-imageModal.addEventListener("dblclick", (evt) => {
-  console.log(evt.target);
-  if (evt.target === imageModal) {
-    imageModal.close();
-  }
+// cerrar con dblclick
+const modalList = Array.from(document.querySelectorAll(".modal"));
+
+modalList.forEach((modal) => {
+  modal.addEventListener("dblclick", (evt) => {
+    if (evt.target === modal) {
+      handleModalClose();
+    }
+  });
 });
 
 //function conectar el template y hacer una tarjeta nueva
