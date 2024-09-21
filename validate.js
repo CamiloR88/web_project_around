@@ -2,7 +2,6 @@
 
 //activa y desactiva la clase error en los elementos
 const showInputError = (formElement, inputElement, errorMessage) => {
-  console.log(inputElement.id);
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add("popup__input_type_error");
   errorElement.textContent = errorMessage;

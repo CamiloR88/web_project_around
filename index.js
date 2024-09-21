@@ -4,10 +4,6 @@ import { enableValidation } from "./validate.js";
 //Cards
 const initialCards = [
   {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
     name: "Parque Nacional de la Vanoise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
   },
@@ -16,16 +12,20 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
   {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+    name: "Bosque",
+    link: "https://images.unsplash.com/photo-1496060169243-453fde45943b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDh8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+    name: "Vale 3",
+    link: "https://images.unsplash.com/photo-1718417286278-b383b8a8ad6d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ4fEJuLURqcmNCcndvfHxlbnwwfHx8fHw%3D",
   },
   {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+    name: "Skate park",
+    link: "https://images.unsplash.com/photo-1589738373432-91e2d93453a4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIzfEJuLURqcmNCcndvfHxlbnwwfHx8fHw%3D",
+  },
+  {
+    name: "Psst, Ya te vi dejame un LIKE.",
+    link: "https://media.istockphoto.com/id/1489732075/es/foto/rana-arbor%C3%ADcola-revoltosa-sentada-en-la-rama.webp?a=1&b=1&s=612x612&w=0&k=20&c=CyuNwfpJHP8gSfqj3eifq-k1BXryGbdoZt1vaYCz1A8=",
   },
 ];
 //popup del perfil
@@ -76,7 +76,7 @@ profileModalSave.addEventListener("click", handleFormSubmit);
 cardModalClose.addEventListener("click", handleModalClose);
 imageModalClose.addEventListener("click", handleModalClose);
 
-// cerrar con dblclick
+// cerrar modal con dblclick
 const modalList = Array.from(document.querySelectorAll(".modal"));
 
 modalList.forEach((modal) => {
