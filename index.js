@@ -1,5 +1,5 @@
 //importacion
-import { enableValidation } from "./validate.js";
+import "./validate.js";
 
 //Cards
 const initialCards = [
