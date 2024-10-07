@@ -1,11 +1,8 @@
-//importacion
-import "./validate.js";
-
 //Cards
 const initialCards = [
   {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+    name: "Vintage",
+    link: "https://images.unsplash.com/photo-1530642901805-fdb3c28754b8?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Lago di Braies",
@@ -24,27 +21,26 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1589738373432-91e2d93453a4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIzfEJuLURqcmNCcndvfHxlbnwwfHx8fHw%3D",
   },
   {
-    name: "Psst, Ya te vi dejame un LIKE.",
-    link: "https://media.istockphoto.com/id/1489732075/es/foto/rana-arbor%C3%ADcola-revoltosa-sentada-en-la-rama.webp?a=1&b=1&s=612x612&w=0&k=20&c=CyuNwfpJHP8gSfqj3eifq-k1BXryGbdoZt1vaYCz1A8=",
+    name: "Multicolor",
+    link: "https://images.unsplash.com/photo-1550853123-b81beb0b1449?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fGZyb2d8ZW58MHx8MHx8fDA%3D",
   },
 ];
 //popup del perfil
 const profileModal = document.querySelector("#popup-profile");
 const profileModalOpen = document.querySelector(".profile__edit-btn");
 const profileModalSave = document.querySelector(".popup__save-btn");
-const profielModalClose = document.querySelector(".popup__close-btn");
 const profileName = document.querySelector(".profile__name");
 const profilePosition = document.querySelector(".profile__position");
+
 //popup para agregar imagenes.
 const cardModal = document.querySelector("#add-card");
 const cardModalOpen = document.querySelector(".profile__add-btn");
 const cardModalSave = document.querySelector("#s-btn");
-const cardModalClose = document.querySelector("#c-btn");
 const cardsContainer = document.querySelector(".elements__container");
 
 //popup de la imagen
 const imageModal = document.querySelector("#show-card");
-const imageModalClose = document.querySelector("#c-img");
+
 //cerrar modal
 function handleModalClose() {
   profileModal.close();
@@ -53,7 +49,6 @@ function handleModalClose() {
 }
 
 //function para actualizar la informacion.
-
 function handleFormSubmit(evt) {
   evt.preventDefault();
   let modalInputName = document.querySelector("#name");
@@ -70,11 +65,18 @@ profileModalOpen.addEventListener("click", () => {
 cardModalOpen.addEventListener("click", () => {
   cardModal.showModal();
 });
-profielModalClose.addEventListener("click", handleModalClose);
+
 profileModalSave.addEventListener("click", handleFormSubmit);
 
-cardModalClose.addEventListener("click", handleModalClose);
-imageModalClose.addEventListener("click", handleModalClose);
+//cerrar modal con X btn
+const modalCloseList = Array.from(
+  document.querySelectorAll(".popup__close-btn")
+);
+modalCloseList.forEach((xBtn) => {
+  xBtn.addEventListener("click", () => {
+    handleModalClose();
+  });
+});
 
 // cerrar modal con dblclick
 const modalList = Array.from(document.querySelectorAll(".modal"));
@@ -89,19 +91,20 @@ modalList.forEach((modal) => {
 
 //function conectar el template y hacer una tarjeta nueva
 
-function addCard(cardTitleValue, cardUrlValue) {
+function addCard(card) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate
     .querySelector(".elements__element")
     .cloneNode(true);
 
-  cardElement.querySelector(".element__name").textContent = cardTitleValue;
-  cardElement.querySelector(".element__img").src = cardUrlValue;
+  cardElement.querySelector(".element__name").textContent = card.name;
+  cardElement.querySelector(".element__img").src = card.link;
+
   //popup de la imagen
   cardElement.querySelector(".element__img").addEventListener("click", () => {
     imageModal.showModal();
-    imageModal.querySelector(".popup__image-render").src = cardUrlValue;
-    imageModal.querySelector(".popup__image-name").textContent = cardTitleValue;
+    imageModal.querySelector(".popup__image-render").src = card.link;
+    imageModal.querySelector(".popup__image-name").textContent = card.name;
   });
 
   //remove
@@ -124,7 +127,7 @@ cardModalSave.addEventListener("click", function () {
   let cardTitle = document.querySelector("#title");
   let cardUrl = document.querySelector("#url");
 
-  addCard(cardTitle.value, cardUrl.value);
+  addCard({ name: cardTitle.value, link: cardUrl.value });
 
   cardTitle.value = "";
   cardUrl.value = "";
@@ -132,5 +135,5 @@ cardModalSave.addEventListener("click", function () {
 });
 
 initialCards.forEach(function (card) {
-  addCard(card.name, card.link);
+  addCard(card);
 });
