@@ -1,98 +1,53 @@
-//Cards
-const initialCards = [
-  {
-    name: "Vintage",
-    link: "https://images.unsplash.com/photo-1530642901805-fdb3c28754b8?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-  {
-    name: "Bosque",
-    link: "https://images.unsplash.com/photo-1496060169243-453fde45943b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDh8Ym84alFLVGFFMFl8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    name: "Vale 3",
-    link: "https://images.unsplash.com/photo-1718417286278-b383b8a8ad6d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDQ4fEJuLURqcmNCcndvfHxlbnwwfHx8fHw%3D",
-  },
-  {
-    name: "Skate park",
-    link: "https://images.unsplash.com/photo-1589738373432-91e2d93453a4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDIzfEJuLURqcmNCcndvfHxlbnwwfHx8fHw%3D",
-  },
-  {
-    name: "Multicolor",
-    link: "https://images.unsplash.com/photo-1550853123-b81beb0b1449?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzl8fGZyb2d8ZW58MHx8MHx8fDA%3D",
-  },
-];
-
-const cardList = document.querySelector(".elements__container");
-const popupElement = document.querySelector(".popup__image");
-const popupCloseButton = document.querySelector(".popup__close-btn");
-const popupImage = document.querySelector(".popup__image-render");
-
-class Card {
-  constructor(cardSelector) {
-    this._cardSelector = cardSelector;
+import { cardsContainer, imageModal } from "./utils.js";
+export class Card {
+  constructor(selector, name, link) {
+    this._selector = selector;
+    this._name = name;
+    this._link = link;
   }
 
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".elements__element")
+  _generateTemplate() {
+    const cardTemplate = document.querySelector(this._selector).content;
+    this._cardElement = cardTemplate
+      .querySelector(".elements__element")
       .cloneNode(true);
-
-    return cardElement;
   }
 
-  _handleOpenModal() {
-    popupElement.showModal();
+  addCard() {
+    this._generateTemplate();
+    this._cardElement.querySelector(".element__name").textContent = this._name;
+    this._cardElement.querySelector(".element__img").src = this._link;
+
+    this._setEventListetener();
+    cardsContainer.prepend(this._cardElement);
+  }
+  _like() {
+    this._cardElement
+      .querySelector(".element__like")
+      .addEventListener("click", function (evt) {
+        evt.target.classList.toggle("element__like_active");
+      });
+  }
+  _remove() {
+    this._cardElement
+      .querySelector(".element__remove")
+      .addEventListener("click", () => {
+        this._cardElement.remove();
+      });
   }
 
-  _handleCloseModal() {
-    popupElement.close();
+  _imagePopup() {
+    this._cardElement
+      .querySelector(".element__img")
+      .addEventListener("click", () => {
+        imageModal.showModal();
+        imageModal.querySelector(".popup__image-render").src = this._link;
+        imageModal.querySelector(".popup__image-name").textContent = this._name;
+      });
   }
-
-  _setEventListeners() {
-    this._element.addEventListener("click", () => {
-      this._handleOpenModal();
-    });
-
-    popupCloseButton.addEventListener("click", () => {
-      this._handleCloseModal();
-    });
-  }
-}
-
-class DefaultCard extends Card {
-  constructor(data, cardSelector) {
-    super(cardSelector);
-    this._title = data.title;
-
-    this._image = data.image;
-  }
-
-  generateCard() {
-    this._element = super._getTemplate();
-    super._setEventListeners();
-
-    this._element.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url(${this._image})`;
-    this._element.querySelector(".card__title").textContent = this._title;
-
-    return this._element;
+  _setEventListetener() {
+    this._imagePopup();
+    this._like();
+    this._remove();
   }
 }
-
-const renderElements = (isGrid) => {
-  cardList.innerHTML = "";
-  initialCards.forEach((card) => {
-    ew;
-
-    const cardElement = card.generateCard();
-    cardList.prepend(cardElement);
-  });
-};
-
-renderElements();
