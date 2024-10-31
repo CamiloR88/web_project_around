@@ -4,9 +4,8 @@
 
 # Desarollado usando (HTML, CSS, JavaScript)
 
-intruduccion basica de JavaScript (Mi primer lenguaje de programacion).
-Por ser el primero si que fue un reto pero se dice que nada que valga la pena es facil de conseguir
-la ejecucion no resulto tan dificil pero toma tiempo para enterder como funciona.
+adentarandonos un poco mas en JavaScript.
+introcduccion de Clases en JS y la progra,acion orientada a objetos (POO)
 
 Uso de la metodolgia BEM e implementacion de @media para facilitar el uso en diferentes resoluciones.
 

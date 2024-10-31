@@ -1,5 +1,5 @@
 //validacion
-export class Formvalidator {
+export class FormValidator {
   constructor(formElement, formConfig) {
     this._formElement = formElement;
     this._formConfig = formConfig;

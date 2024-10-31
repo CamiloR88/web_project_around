@@ -1,4 +1,4 @@
-import { cardsContainer, imageModal } from "./utils.js";
+import { cardsContainer, imageModal } from "./constants.js";
 export class Card {
   constructor(selector, name, link) {
     this._selector = selector;
