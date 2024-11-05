@@ -1,9 +1,10 @@
 import { cardsContainer, imageModal } from "./constants.js";
 export class Card {
-  constructor(selector, name, link) {
+  constructor(selector, name, link, handleClick) {
     this._selector = selector;
     this._name = name;
     this._link = link;
+    this._handleClick = handleClick;
   }
 
   _generateTemplate() {
@@ -19,7 +20,7 @@ export class Card {
     this._cardElement.querySelector(".element__img").src = this._link;
 
     this._setEventListetener();
-    cardsContainer.prepend(this._cardElement);
+    return this._cardElement;
   }
   _like() {
     this._cardElement
@@ -40,9 +41,7 @@ export class Card {
     this._cardElement
       .querySelector(".element__img")
       .addEventListener("click", () => {
-        imageModal.showModal();
-        imageModal.querySelector(".popup__image-render").src = this._link;
-        imageModal.querySelector(".popup__image-name").textContent = this._name;
+        this._handleClick();
       });
   }
   _setEventListetener() {

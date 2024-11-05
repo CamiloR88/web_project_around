@@ -18,21 +18,16 @@ module.exports = {
   stats: { children: true },
   mode: "development",
   devServer: {
-    static: path.resolve(__dirname, "./dist"),
+    static: path.resolve(__dirname, "dist"),
     compress: true,
     port: 8080,
     open: true,
   },
   module: {
     rules: [
-      // esto es un array de reglas
-      // añádele un objeto que contenga reglas para Babel
       {
-        // una expresión regular que busca todos los archivos js
         test: /\.js$/,
-        // todos los archivos deben ser procesados por babel-loader
         loader: "babel-loader",
-        // excluye la carpeta node_modules, no necesitamos procesar archivos en ella
         exclude: "/node_modules/",
       },
       {
@@ -41,15 +36,12 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: {
-              importLoaders: 1,
-            },
+            options: { importLoaders: 1 },
           },
           "postcss-loader",
         ],
       },
       {
-        // añade la regla para el procesamiento de archivos
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
         type: "asset/resource",
       },
@@ -57,9 +49,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // ruta a nuestro archivo index.html
+      template: "./src/index.html",
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(), // conecta el plugin para fusionar archivos CSS
+    new MiniCssExtractPlugin(),
   ],
 };

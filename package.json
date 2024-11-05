@@ -12,6 +12,7 @@
     "buffer-from": "^1.1.2",
     "caniuse-lite": "^1.0.30001669",
     "chrome-trace-event": "^1.0.4",
+    "clean-webpack-plugin": "^4.0.0",
     "commander": "^2.20.3",
     "core-js": "^3.38.1",
     "electron-to-chromium": "^1.5.42",
@@ -55,8 +56,8 @@
     "webpack-sources": "^3.2.3"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "dev": "webpack serve"
+    "build": "rm -rf dist && webpack --mode production",
+    "dev": "webpack serve --mode production"
   },
   "author": "",
   "license": "ISC",
@@ -70,7 +71,7 @@
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.1",
     "postcss-loader": "^8.1.1",
-    "webpack": "^5.95.0",
+    "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   }
