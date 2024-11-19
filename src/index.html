@@ -12,6 +12,16 @@
   </head>
   <body>
     <div class="page">
+      <dialog class="popup modal" id="popup-avatar">
+        <button type="submit" class="popup__close-btn" id="c-img">
+          <img
+            src="<%=require('./images/svg/popup-close.svg')%>"
+            alt="boton de cerrar"
+          />
+        </button>
+        <p>Estas seguro/a</p>
+        <button>si</button>
+      </dialog>
       <dialog class="popup modal" id="popup-profile">
         <button type="submit" class="popup__close-btn">
           <img

@@ -8,9 +8,6 @@ export const cardModal = document.querySelector("#add-card");
 export const cardModalOpen = document.querySelector(".profile__add-btn");
 //export const cardsContainer = document.querySelector(".elements__container");
 
-//popup de la imagen
-export const imageModal = document.querySelector("#show-card");
-
 //forms
 export const profileModalForm = document.querySelector("#profileForm");
 export const cardModalForm = document.querySelector("#newCardForm");

@@ -5,10 +5,10 @@ import {
   formConfig,
   profileModalForm,
   cardModalForm,
-  imageModal,
 } from "./scripts/constants.js";
 import { Card } from "./scripts/Card.js";
 import { FormValidator } from "./scripts/FormValidator.js";
+import { api } from "./scripts/Api.js";
 import PopupWithForm from "./scripts/PopupWithForm.js";
 import UserInfo from "./scripts/UserInfo.js";
 import Section from "./scripts/Section.js";
@@ -36,12 +36,12 @@ const newCardPopup = new PopupWithForm("#add-card", (values) => {
     values.title,
     values.link,
     () => {
-      xPopup.open({ name: values.title, link: values.link });
+      imagePopup.open({ name: values.title, link: values.link });
     }
   );
   const cardElement = defaultCards.addCard();
 
-  contaienerCards.addItem(cardElement);
+  listCard.addItem(cardElement);
 });
 const editProfilePopup = new PopupWithForm("#popup-profile", (values) => {
   profileInfo.setUserInfo(values.name, values.about);
@@ -49,26 +49,30 @@ const editProfilePopup = new PopupWithForm("#popup-profile", (values) => {
 
 newCardPopup.setEventListeners();
 editProfilePopup.setEventListeners();
-const xPopup = new PopupWithImage("#show-card");
-xPopup._setEventListeners();
+const imagePopup = new PopupWithImage("#show-card");
+imagePopup._setEventListeners();
 
-const contaienerCards = new Section(
-  {
-    items: initialCards,
-    renderer: (card) => {
-      const defaultCards = new Card(
-        "#card-template",
-        card.name,
-        card.link,
-        () => {
-          xPopup.open({ name: card.name, link: card.link });
-        }
-      );
-      const cardElement = defaultCards.addCard();
+let listCard = null;
 
-      contaienerCards.addItem(cardElement);
+api.getInitialCards().then((res) => {
+  listCard = new Section(
+    {
+      items: res,
+      renderer: (card) => {
+        const defaultCards = new Card(
+          "#card-template",
+          card.name,
+          card.link,
+          () => {
+            imagePopup.open({ name: card.name, link: card.link });
+          }
+        );
+        const cardElement = defaultCards.addCard();
+
+        listCard.addItem(cardElement);
+      },
     },
-  },
-  ".elements__container"
-);
-contaienerCards.renderer();
+    ".elements__container"
+  );
+  listCard.renderer();
+});
