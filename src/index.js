@@ -1,7 +1,6 @@
 import {
   profileModalOpen,
   cardModalOpen,
-  initialCards,
   formConfig,
   profileModalForm,
   cardModalForm,
@@ -14,7 +13,7 @@ import UserInfo from "./scripts/UserInfo.js";
 import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
 import "./pages/index.css";
-const profileInfo = new UserInfo(".profile__name", ".profile__position");
+const profileInfo = new UserInfo(".profile__name", ".profile__about");
 
 const validProfileForm = new FormValidator(profileModalForm, formConfig);
 
@@ -31,17 +30,28 @@ cardModalOpen.addEventListener("click", () => {
 });
 
 const newCardPopup = new PopupWithForm("#add-card", (values) => {
-  const defaultCards = new Card(
-    "#card-template",
-    values.title,
-    values.link,
-    () => {
-      imagePopup.open({ name: values.title, link: values.link });
-    }
-  );
-  const cardElement = defaultCards.addCard();
+  api.storeCard(values.title, values.link).then((card) => {
+    const defaultCards = new Card(
+      "#card-template",
+      card.name,
+      card.link,
+      card,
+      curentUser,
+      () => {
+        imagePopup.open({ name: card.name, link: card.link });
+      },
+      () => {
+        return api.setLike();
+      },
+      () => {
+        return api.rmvlike();
+      },
+      () => api.removeCard(card._id)
+    );
+    const cardElement = defaultCards.addCard();
 
-  listCard.addItem(cardElement);
+    listCard.addItem(cardElement);
+  });
 });
 const editProfilePopup = new PopupWithForm("#popup-profile", (values) => {
   profileInfo.setUserInfo(values.name, values.about);
@@ -53,26 +63,40 @@ const imagePopup = new PopupWithImage("#show-card");
 imagePopup._setEventListeners();
 
 let listCard = null;
+let curentUser = null;
 
-api.getInitialCards().then((res) => {
-  listCard = new Section(
-    {
-      items: res,
-      renderer: (card) => {
-        const defaultCards = new Card(
-          "#card-template",
-          card.name,
-          card.link,
-          () => {
-            imagePopup.open({ name: card.name, link: card.link });
-          }
-        );
-        const cardElement = defaultCards.addCard();
+api.getUserInfo().then((user) => {
+  profileInfo.setUserInfo(user.name, user.about);
+  curentUser = user;
+  api.getInitialCards().then((res) => {
+    listCard = new Section(
+      {
+        items: res,
+        renderer: (card) => {
+          const defaultCards = new Card(
+            "#card-template",
+            card.name,
+            card.link,
+            card,
+            curentUser,
+            () => {
+              imagePopup.open({ name: card.name, link: card.link });
+            },
+            () => {
+              return api.setLike();
+            },
+            () => {
+              return api.rmvlike();
+            },
+            () => api.removeCard(card._id)
+          );
+          const cardElement = defaultCards.addCard();
 
-        listCard.addItem(cardElement);
+          listCard.addItem(cardElement);
+        },
       },
-    },
-    ".elements__container"
-  );
-  listCard.renderer();
+      ".elements__container"
+    );
+    listCard.renderer();
+  });
 });

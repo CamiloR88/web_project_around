@@ -19,6 +19,46 @@ class Api {
       },
     }).then((res) => res.json());
   }
+  storeCard(name, link) {
+    return fetch(`${this._url}/cards`, {
+      headers: {
+        Authorization: this._token,
+        "content-type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ name, link }),
+    }).then((res) => res.json());
+  }
+  setLike() {
+    return fetch(`${this._url}/cards/:cardId/likes`, {
+      headers: {
+        Authorization: this._token,
+        "content-type": "application/json",
+      },
+      method: "PUT",
+      body: JSON.stringify({}),
+    });
+    then((res) => res / json());
+  }
+
+  rmvLike() {
+    return fetch(`${this._url}/cards/:cardId/likes`, {
+      headers: {
+        Authorization: this._token,
+        "content-type": "application/json",
+      },
+      method: "DELETE",
+    });
+  }
+  removeCard(id) {
+    return fetch(`${this._url}/cards/${id}`, {
+      headers: {
+        Authorization: this._token,
+      },
+
+      method: "DELETE",
+    });
+  }
 }
 
 const api = new Api(
