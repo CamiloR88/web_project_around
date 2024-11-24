@@ -14,7 +14,7 @@ export class Card {
     this._name = name;
     this._link = link;
     this._id = _id;
-    this._isliked = isLiked;
+    this._isLiked = isLiked;
     this._owner = owner;
     this._curentUser = curentUser;
 
@@ -41,22 +41,22 @@ export class Card {
     }
     this._like();
     this._setEventListetener();
-    if (this._isliked) {
+    if (this._isLiked) {
       this._likeElement.classList.add("element__like_active");
     }
     return this._cardElement;
   }
 
   _like() {
-    this._likeElement.addEventListener("click", (evt) => {
-      if (this._isliked) {
+    this._likeElement.addEventListener("click", () => {
+      if (this._isLiked) {
         this._handleUnLike().then((res) => {
-          this._isliked = res.isLiked;
+          this._isLiked = res.isLiked;
           this._likeElement.classList.remove("element__like_active");
         });
       } else {
         this._handleLike().then((res) => {
-          this._isliked = res.isLiked;
+          this._isLiked = res.isLiked;
           this._likeElement.classList.add("element__like_active");
         });
       }

@@ -1,7 +1,7 @@
 //popup del perfil
 export const profileModal = document.querySelector("#popup-profile");
 export const profileModalOpen = document.querySelector(".profile__edit-btn");
-export const profileModalSave = document.querySelector(".popup__save-btn");
+export const profileModalSave = document.querySelector(".popup__submit-btn");
 
 //popup para agregar imagenes.
 export const cardModal = document.querySelector("#add-card");
@@ -44,8 +44,8 @@ export const cardsContainer = document.querySelector(".elements__container");
 export const formConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__save-btn",
-  inactiveButtonClass: "popup__save-btn_inactive",
+  submitButtonSelector: ".popup__submit-btn",
+  inactiveButtonClass: "popup__submit-btn_inactive",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
 };

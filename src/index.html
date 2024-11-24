@@ -12,15 +12,50 @@
   </head>
   <body>
     <div class="page">
-      <dialog class="popup modal" id="popup-avatar">
+      <dialog class="popup__confirmation modal" id="popup-confirmation">
         <button type="submit" class="popup__close-btn" id="c-img">
           <img
             src="<%=require('./images/svg/popup-close.svg')%>"
             alt="boton de cerrar"
           />
         </button>
-        <p>Estas seguro/a</p>
-        <button>si</button>
+        <form
+          class="popup__form-small"
+          method="dialog"
+          id="rmv-card_form"
+          novalidate
+        >
+          <h2 class="popup__title">¿Estas seguro/a?</h2>
+          <button class="popup__submit-btn">si</button>
+        </form>
+      </dialog>
+
+      <dialog class="popup__avatar modal" id="popup-avatar">
+        <button type="submit" class="popup__close-btn" id="c-img">
+          <img
+            src="<%=require('./images/svg/popup-close.svg')%>"
+            alt="boton de cerrar"
+          />
+        </button>
+        <form
+          class="popup__form-medium"
+          method="dialog"
+          id="change-avatar_form"
+          novalidate
+        >
+          <h2 class="popup__title">Cambiar foto de perfil</h2>
+          <input
+            type="url"
+            class="popup__input"
+            placeholder="image URL"
+            id="url"
+            name="link"
+            minlength="1"
+            required
+          />
+          <span class="url-error popup__input-error"></span>
+          <button class="popup__submit-btn">Guardar</button>
+        </form>
       </dialog>
       <dialog class="popup modal" id="popup-profile">
         <button type="submit" class="popup__close-btn">
@@ -56,7 +91,7 @@
           />
           <span class="about-error popup__input-error"></span>
 
-          <button type="submit" class="popup__save-btn">Guadar</button>
+          <button type="submit" class="popup__submit-btn">Guadar</button>
         </form>
       </dialog>
       <dialog class="popup modal" id="add-card">
@@ -92,7 +127,7 @@
           />
           <span class="url-error popup__input-error"></span>
 
-          <button type="submit" class="popup__save-btn" id="s-btn">
+          <button type="submit" class="popup__submit-btn" id="s-btn">
             Guadar
           </button>
         </form>
