@@ -29,29 +29,27 @@ class Api {
       body: JSON.stringify({ name, link }),
     }).then((res) => res.json());
   }
-  setLike() {
-    return fetch(`${this._url}/cards/:cardId/likes`, {
+  setLike(_id) {
+    return fetch(`${this._url}/cards/${_id}/likes`, {
       headers: {
         Authorization: this._token,
         "content-type": "application/json",
       },
       method: "PUT",
-      body: JSON.stringify({}),
-    });
-    then((res) => res / json());
+    }).then((res) => res.json());
   }
 
-  rmvLike() {
-    return fetch(`${this._url}/cards/:cardId/likes`, {
+  rmvLike(_id) {
+    return fetch(`${this._url}/cards/${_id}/likes`, {
       headers: {
         Authorization: this._token,
         "content-type": "application/json",
       },
       method: "DELETE",
-    });
+    }).then((res) => res.json());
   }
-  removeCard(id) {
-    return fetch(`${this._url}/cards/${id}`, {
+  removeCard(_id) {
+    return fetch(`${this._url}/cards/${_id}`, {
       headers: {
         Authorization: this._token,
       },

@@ -41,10 +41,10 @@ const newCardPopup = new PopupWithForm("#add-card", (values) => {
         imagePopup.open({ name: card.name, link: card.link });
       },
       () => {
-        return api.setLike();
+        return api.setLike(card._id);
       },
       () => {
-        return api.rmvlike();
+        return api.rmvLike(card._id);
       },
       () => api.removeCard(card._id)
     );
@@ -83,10 +83,10 @@ api.getUserInfo().then((user) => {
               imagePopup.open({ name: card.name, link: card.link });
             },
             () => {
-              return api.setLike();
+              return api.setLike(card._id);
             },
             () => {
-              return api.rmvlike();
+              return api.rmvLike(card._id);
             },
             () => api.removeCard(card._id)
           );

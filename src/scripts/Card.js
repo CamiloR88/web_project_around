@@ -3,7 +3,7 @@ export class Card {
     selector,
     name,
     link,
-    { _id, likes, owner },
+    { _id, isLiked, owner },
     curentUser,
     handleClick,
     handleLike,
@@ -14,7 +14,7 @@ export class Card {
     this._name = name;
     this._link = link;
     this._id = _id;
-    this._likes = likes;
+    this._isliked = isLiked;
     this._owner = owner;
     this._curentUser = curentUser;
 
@@ -33,6 +33,7 @@ export class Card {
 
   addCard() {
     this._generateTemplate();
+    this._likeElement = this._cardElement.querySelector(".element__like");
     this._cardElement.querySelector(".element__name").textContent = this._name;
     this._cardElement.querySelector(".element__img").src = this._link;
     if (this._owner !== this._curentUser._id) {
@@ -40,20 +41,26 @@ export class Card {
     }
     this._like();
     this._setEventListetener();
+    if (this._isliked) {
+      this._likeElement.classList.add("element__like_active");
+    }
     return this._cardElement;
   }
 
   _like() {
-    this._cardElement
-      .querySelector(".element__like")
-      .addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__like_active");
-        if (this._likes.some((like) => like._id === this._curentUser._id)) {
-          this._handleUnLike().then();
-        } else {
-          this._handleLike().then();
-        }
-      });
+    this._likeElement.addEventListener("click", (evt) => {
+      if (this._isliked) {
+        this._handleUnLike().then((res) => {
+          this._isliked = res.isLiked;
+          this._likeElement.classList.remove("element__like_active");
+        });
+      } else {
+        this._handleLike().then((res) => {
+          this._isliked = res.isLiked;
+          this._likeElement.classList.add("element__like_active");
+        });
+      }
+    });
   }
 
   _remove() {
