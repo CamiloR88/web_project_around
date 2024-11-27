@@ -67,8 +67,9 @@ export class Card {
     this._cardElement
       .querySelector(".element__remove")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
-        this._cardElement.remove();
+        this._handleDeleteCard(() => {
+          this._cardElement.remove();
+        });
       });
   }
 

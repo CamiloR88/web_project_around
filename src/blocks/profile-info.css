@@ -8,6 +8,9 @@
   margin-left: 30px;
   padding-top: 22px;
 }
+.profile__about {
+  margin-left: 30px;
+}
 .profile__edit-btn {
   margin: 32px 0 0 18px;
   padding: 0;

@@ -3,6 +3,28 @@ class Api {
     this._url = url;
     this._token = token;
   }
+  setProfileInfo(data) {
+    return fetch(`${this._url}/users/me`, {
+      method: "PATCH",
+      headers: {
+        Authorization: this._token,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  }
+  setProfileAvatar(url) {
+    return fetch(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        Authorization: this._token,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: url,
+      }),
+    }).then((res) => res.json());
+  }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {

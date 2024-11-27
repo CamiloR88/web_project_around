@@ -4,6 +4,7 @@ import {
   formConfig,
   profileModalForm,
   cardModalForm,
+  avatar,
 } from "./scripts/constants.js";
 import { Card } from "./scripts/Card.js";
 import { FormValidator } from "./scripts/FormValidator.js";
@@ -13,6 +14,7 @@ import UserInfo from "./scripts/UserInfo.js";
 import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
 import "./pages/index.css";
+import PopupWithConfirmation from "./scripts/PopupWithConfirmation.js";
 const profileInfo = new UserInfo(".profile__name", ".profile__about");
 
 const validProfileForm = new FormValidator(profileModalForm, formConfig);
@@ -28,6 +30,8 @@ profileModalOpen.addEventListener("click", () => {
 cardModalOpen.addEventListener("click", () => {
   newCardPopup.open();
 });
+const dltPopup = new PopupWithConfirmation("#popup-confirmation");
+dltPopup._setEventListeners();
 
 const newCardPopup = new PopupWithForm("#add-card", (values) => {
   api.storeCard(values.title, values.link).then((card) => {
@@ -46,7 +50,13 @@ const newCardPopup = new PopupWithForm("#add-card", (values) => {
       () => {
         return api.rmvLike(card._id);
       },
-      () => api.removeCard(card._id)
+      (deleteHtmlCard) => {
+        dltPopup.open(() => {
+          api.removeCard(card._id).then((res) => {
+            deleteHtmlCard();
+          });
+        });
+      }
     );
     const cardElement = defaultCards.addCard();
 
@@ -54,9 +64,16 @@ const newCardPopup = new PopupWithForm("#add-card", (values) => {
   });
 });
 const editProfilePopup = new PopupWithForm("#popup-profile", (values) => {
-  profileInfo.setUserInfo(values.name, values.about);
+  api.setProfileInfo(values).then((res) => {
+    profileInfo.setUserInfo(res.name, res.about);
+  });
 });
+// const setAvatarPopup = new PopupWithForm("#popup-avatar", (values) => {
+//   api.setProfileAvatar().then(res);
+//   avatar.classList.replace("back");
+// });
 
+// setAvatarPopup.setEventListeners();
 newCardPopup.setEventListeners();
 editProfilePopup.setEventListeners();
 const imagePopup = new PopupWithImage("#show-card");
@@ -88,7 +105,13 @@ api.getUserInfo().then((user) => {
             () => {
               return api.rmvLike(card._id);
             },
-            () => api.removeCard(card._id)
+            (deleteHtmlCard) => {
+              dltPopup.open(() => {
+                api.removeCard(card._id).then((res) => {
+                  deleteHtmlCard();
+                });
+              });
+            }
           );
           const cardElement = defaultCards.addCard();
 

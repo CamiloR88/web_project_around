@@ -112,7 +112,6 @@
   color: #fff;
 }
 .popup__confirmation {
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
@@ -123,7 +122,6 @@
   min-height: 181px;
 }
 .popup__avatar {
-  display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
