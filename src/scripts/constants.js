@@ -5,6 +5,8 @@ export const profileModalSave = document.querySelector(".popup__submit-btn");
 
 export const avatar = document.querySelector("#img-avatar");
 
+export const avatarImg = document.querySelector(".profile__avatar");
+
 //popup para agregar imagenes.
 export const cardModal = document.querySelector("#add-card");
 export const cardModalOpen = document.querySelector(".profile__add-btn");

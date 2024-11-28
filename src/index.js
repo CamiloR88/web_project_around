@@ -5,6 +5,7 @@ import {
   profileModalForm,
   cardModalForm,
   avatar,
+  avatarImg,
 } from "./scripts/constants.js";
 import { Card } from "./scripts/Card.js";
 import { FormValidator } from "./scripts/FormValidator.js";
@@ -15,7 +16,11 @@ import Section from "./scripts/Section.js";
 import PopupWithImage from "./scripts/PopupWithImage.js";
 import "./pages/index.css";
 import PopupWithConfirmation from "./scripts/PopupWithConfirmation.js";
-const profileInfo = new UserInfo(".profile__name", ".profile__about");
+const profileInfo = new UserInfo(
+  ".profile__name",
+  ".profile__about",
+  ".profile__avatar"
+);
 
 const validProfileForm = new FormValidator(profileModalForm, formConfig);
 
@@ -33,8 +38,8 @@ cardModalOpen.addEventListener("click", () => {
 const dltPopup = new PopupWithConfirmation("#popup-confirmation");
 dltPopup._setEventListeners();
 
-const newCardPopup = new PopupWithForm("#add-card", (values) => {
-  api.storeCard(values.title, values.link).then((card) => {
+const newCardPopup = new PopupWithForm("#add-card", async (values) => {
+  return api.storeCard(values.title, values.link).then((card) => {
     const defaultCards = new Card(
       "#card-template",
       card.name,
@@ -63,17 +68,21 @@ const newCardPopup = new PopupWithForm("#add-card", (values) => {
     listCard.addItem(cardElement);
   });
 });
-const editProfilePopup = new PopupWithForm("#popup-profile", (values) => {
-  api.setProfileInfo(values).then((res) => {
-    profileInfo.setUserInfo(res.name, res.about);
+const editProfilePopup = new PopupWithForm("#popup-profile", async (values) => {
+  return api.setProfileInfo(values).then((res) => {
+    profileInfo.setUserInfo(res.name, res.about, res.avatar);
   });
 });
-// const setAvatarPopup = new PopupWithForm("#popup-avatar", (values) => {
-//   api.setProfileAvatar().then(res);
-//   avatar.classList.replace("back");
-// });
-
-// setAvatarPopup.setEventListeners();
+const setAvatarPopup = new PopupWithForm("#popup-avatar", async (values) => {
+  return api.setProfileAvatar(values).then((res) => {
+    console.log(res);
+    avatarImg.src = res.avatar;
+  });
+});
+avatar.addEventListener("click", () => {
+  setAvatarPopup.open();
+});
+setAvatarPopup.setEventListeners();
 newCardPopup.setEventListeners();
 editProfilePopup.setEventListeners();
 const imagePopup = new PopupWithImage("#show-card");
@@ -83,7 +92,7 @@ let listCard = null;
 let curentUser = null;
 
 api.getUserInfo().then((user) => {
-  profileInfo.setUserInfo(user.name, user.about);
+  profileInfo.setUserInfo(user.name, user.about, user.avatar);
   curentUser = user;
   api.getInitialCards().then((res) => {
     listCard = new Section(

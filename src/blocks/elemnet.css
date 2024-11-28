@@ -9,7 +9,7 @@
 .element__img {
   object-fit: cover;
   max-width: 282px;
-  min-height: 282px;
+  height: 282px;
 }
 .element__description {
   display: flex;

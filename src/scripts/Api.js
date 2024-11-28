@@ -21,7 +21,7 @@ class Api {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        avatar: url,
+        avatar: url.link,
       }),
     }).then((res) => res.json());
   }

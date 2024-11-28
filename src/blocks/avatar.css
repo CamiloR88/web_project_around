@@ -1,5 +1,5 @@
 .profile__avatar-container {
-  background-image: url("../images/Jacques-photo.jpg");
+  background: transparent;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -8,9 +8,18 @@
   border: none;
   border-radius: 50%;
   aspect-ratio: 1;
+  position: relative;
+}
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
 }
 
 .profile__avatar-edit {
+  position: absolute;
+  left: 55px;
+  top: 45px;
   opacity: 0;
 }
 .profile__avatar-container:hover {
