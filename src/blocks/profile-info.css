@@ -2,14 +2,21 @@
   display: flex;
 }
 .profile__name {
+  max-width: 350px;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
   margin-left: 30px;
   padding-top: 22px;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .profile__about {
+  max-width: 250px;
   margin-left: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .profile__edit-btn {
   margin: 32px 0 0 18px;

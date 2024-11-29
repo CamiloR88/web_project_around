@@ -36,6 +36,7 @@ export class Card {
     this._likeElement = this._cardElement.querySelector(".element__like");
     this._cardElement.querySelector(".element__name").textContent = this._name;
     this._cardElement.querySelector(".element__img").src = this._link;
+    this._cardElement.querySelector(".element__img").alt = this._name;
     if (this._owner !== this._curentUser._id) {
       this._cardElement.querySelector(".element__remove").remove();
     }
